@@ -5,6 +5,10 @@
 
 function! s:get_net_framework_dir(version)
 
+    if !has("win32")
+        return "/usr/bin/"
+    endif
+
     if exists("g:net_framework_top")
         net_framework_top = g:net_framework_top
     else

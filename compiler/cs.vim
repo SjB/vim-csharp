@@ -18,4 +18,8 @@ CompilerSet errorformat+=%f(%l\\,%v):\ %t%*[^:]:\ %m,
             \%trror%*[^:]:\ %m,
             \%tarning%*[^:]:\ %m
 
-execute 'CompilerSet makeprg=' . cs#get_net_compiler("csc.exe") . "\\ %"
+if has("win32")
+    execute 'CompilerSet makeprg=' . cs#get_net_compiler("csc.exe") . "\\ %"
+else
+    execute 'CompilerSet makeprg=' . cs#get_net_compiler("dmcs") . "\\ %"
+endif

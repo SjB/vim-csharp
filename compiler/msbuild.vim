@@ -24,9 +24,17 @@ else
     let s:build_file = cs#find_net_solution_file()
 endif
 
-execute 'CompilerSet makeprg=' . cs#get_net_compiler("msbuild.exe") . "\\ " 
+if has("win32")
+    execute 'CompilerSet makeprg=' . cs#get_net_compiler("msbuild.exe") . "\\ " 
             \ . "/nologo\\ /clp:Verbosity=quiet\\ /property:GenerateFullPaths=true\\ "
             \ . s:build_file
+else
+    execute 'CompilerSet makeprg=' . cs#get_net_compiler("xbuild") . "\\ " 
+            \ . "/nologo\\ /clp:Verbosity=quiet\\ /property:GenerateFullPaths=true\\ "
+            \ . s:build_file
+endif
+
+
 
 
 
