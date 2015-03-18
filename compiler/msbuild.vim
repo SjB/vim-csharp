@@ -31,7 +31,7 @@ if has("win32")
 else
     execute 'CompilerSet makeprg=' . cs#get_net_compiler("xbuild") . "\\ " 
             \ . "/nologo\\ /clp:Verbosity=quiet\\ /property:GenerateFullPaths=true\\ "
-            \ . s:build_file
+            \ . "\"".s:build_file."\""
 endif
 
 
